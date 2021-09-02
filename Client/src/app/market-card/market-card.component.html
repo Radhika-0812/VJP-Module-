@@ -1,0 +1,249 @@
+<app-navbar>
+    <h3 style="color: aliceblue;">Market&nbsp;Card</h3>
+</app-navbar>
+<div style=" min-height: calc(100vh - 110px);">
+    <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
+
+
+
+
+        <div id="componentID">
+
+            <table
+                style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+                <tr>
+                    <th rowspan="4" style="text-align: center;"><img src="assets/vjp3.png" height="60" width="140"></th>
+                    <!-- <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;text-align: center;"
+                        rowspan="4"><b>VJP</b> 
+                    </td> -->
+                    <td style="width: 50%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;"
+                        rowspan="4"><B>ROUTE CARD</B></td>
+                    <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 3px;">DOC.NO
+                    </td>
+                    <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 3px;">
+                        STO/R/12</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;">REV.NO</td>
+                    <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;">00</td>
+
+                </tr>
+
+                <tr>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">PAGE NO</td>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">1</td>
+
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">ROUTE CARD NO&DATE</td>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">{{routeObj.cardNo}} &
+                        {{routeObj.createdAt | date: 'dd/MM/yyyy'}}</td>
+
+                </tr>
+            </table>
+            <table style="font-size: 13px; width: 100%;">
+
+                <tr>
+                    <th style="width: 10%;font-weight: 500;">DRAWING CODE</th>
+                    <th style="width: 10%;font-size: 11px;">{{headerSource.id}}</th>
+                    <th style="width: 10%;font-weight: 500;">PURCHASE ORDER QTY</th>
+                    <th style="width: 10%;font-size: 11px;"> {{mObject.orderQty}}</th>
+                    <th style="width: 10%;font-weight: 500;">START DATE</th>
+                    <th style="width: 10%;font-size: 11px;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                    <th style="width: 10%;font-weight: 500;">AS CAST WEIGHT</th>
+                    <th style="width: 10%;font-size: 11px;">{{ headerSource.castWeight}}</th>
+                </tr>
+                <tr>
+                    <th style="font-weight: 500;">REV NUMBER</th>
+                    <th style="font-size: 11px;">{{headerSource.revNo}}</th>
+                    <th style="font-weight: 500;">PURCHASE ORDER NUMBER /
+                        REVISON NO /
+                        <br>LINE ITEM NO</th>
+                    <th style="font-size: 11px;">{{ mObject.poNo}} / {{ mObject.PoRevNo}} / {{ mObject.LineItem}}</th>
+                    <th style="font-weight: 500;">COMMITTED DATE</th>
+                    <th style="font-size: 11px;">{{ mObject.CommittedDate}}</th>
+                    <th style="font-weight: 500;">RUNNER WEIGHT</th>
+                    <th style="font-size: 11px;">{{headerSource.withRunerWeight}}</th>
+                </tr>
+                <tr>
+                    <th style="font-weight: 500;">DRAWING NUMBER</th>
+                    <th style="font-size: 11px;">{{headerSource.partNum}}</th>
+                    <th style="font-weight: 500;">PURCHASE ORDER DATE</th>
+                    <th style="font-size: 11px;">{{mObject.poDate | date: 'dd/MM/yyyy'}}</th>
+                    <th style="font-weight: 500;">MATERIAL ISSUED FROM STORE IN KG</th>
+                    <th style="font-size: 11px;">{{headerSource.castWeight}}</th>
+                    <th style="font-weight: 500;">FINSHED WEIGHT</th>
+                    <th style="font-size: 11px;">{{headerSource.machineWeight}}</th>
+                </tr>
+                <tr>
+                    <th style="font-weight: 500;">PART NAME </th>
+                    <th style="font-size: 11px;">{{headerSource.partName | uppercase}}</th>
+                    <th style="font-weight: 500;">MATERIAL SPECIFICATION</th>
+                    <th style="font-size: 11px;">{{headerSource.materialSpec}}</th>
+                    <th style="font-weight: 500;">BATCH QTY</th>
+                    <th style="font-size: 11px;">{{routeObj.qty}}</th>
+                    <th style="font-weight: 500;">REMAINING QTY</th>
+                    <th style="font-size: 11px;">{{routeObj.rQty}}</th>
+                </tr>
+                <tr>
+                    <th>Special Process</th>
+
+                    <th colspan="8">
+                        <ng-container *ngIf="headerSource.fpi">
+                            FPI&nbsp;
+                        </ng-container>
+
+                        <ng-container *ngIf="headerSource.radiographyTest">
+                            ,&nbsp;Radiography Test&nbsp;
+                        </ng-container>
+
+                        <ng-container *ngIf="headerSource.anodizing">
+                            ,&nbsp;Anodizing&nbsp;
+                        </ng-container>
+
+                        <ng-container *ngIf="headerSource.powderCoating">
+                            ,&nbsp;Powder Coating
+                        </ng-container>
+
+
+
+                    </th>
+                </tr>
+
+
+            </table>
+
+
+            <table style="width:100%;font-size: 60%;text-align: left;">
+                <tr class="test">
+                    <th>OPNo</th>
+                    <th>PROCESS FLOW SEQUENCE</th>
+                    <th>WORK CENTER</th>
+                    <th>STARTING DATE</th>
+                    <th>PRODUCT QTY</th>
+                    <th>ACCEPT QTY</th>
+                    <th>REWORK QTY</th>
+                    <th>REJECTION QTY</th>
+                    <th>ENDING DATE</th>
+                    <th>OPERATOR SIGN</th>
+                    <th>SUPERVISOR SIGN</th>
+                    <th>QUALITY SIGN</th>
+                    <th>REMARKS</th>
+                </tr>
+
+                <tr class="test" *ngFor="let element of dataSource; let rIndex = index;">
+                    <th>{{element.opnNo}}</th>
+                    <td>{{element.opnName | uppercase}}</td>
+                    <td style="padding:10px;"> {{element.workCenter | uppercase}}</td>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+
+                </tr>
+
+
+
+
+            </table>
+            <br>
+            <table style=" border: 1px solid black;font-size: 70%;border-collapse: collapse;width: 100%;">
+                <tr>
+                    <td style="  border: 1px solid black; border-collapse: collapse; padding: 3px;text-align:left;height: 50px;"
+                        colspan="7">NOTE:</td>
+                </tr>
+                <tr>
+
+                    <td
+                        style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 3px;text-align: center;">
+                    </td>
+                    <td
+                        style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 3px;text-align: center;">
+                    </td>
+
+                    <td style="width: 600px;  border: 1px solid black;  border-collapse: collapse; padding: 3px; text-align: center;"
+                        colspan="2">OPERATION ADDED</td>
+                    <td
+                        style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 3px;text-align: center;">
+                    </td>
+                    <td
+                        style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 3px;text-align: center;">
+                    </td>
+
+                    <td style="width: 200px; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 3px;"
+                        rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;text-align: center;">
+                        REV.NO
+                    </td>
+                    <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;text-align: center;">
+                        DATE
+                    </td>
+                    <td style="width: 200px;  border: 1px solid black;  border-collapse: collapse; padding: 3px; text-align: center;"
+                        colspan="2">DESCRIPTION</td>
+
+                    <td
+                        style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 3px; text-align: center;">
+                        PREPARED</td>
+                    <td
+                        style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 3px; text-align: center;">
+                        APPROVED</td>
+
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;height: 40PX;"></td>
+                    <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;height: 40PX;"></td>
+
+                    <td style=" width: 50px; border: 1px solid black; border-collapse: collapse; padding: 3px;"
+                        colspan="1">
+                    </td>
+                    <td style=" width: 50px; border: 1px solid black;border-collapse: collapse; padding: 3px;"
+                        colspan="1">
+                    </td>
+                    <td style=" width: 50px; border: 1px solid black; border-collapse: collapse; padding: 3px;"
+                        colspan="2">
+                    </td>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;height: 40PX;"></td>
+
+
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;text-align: center;">
+                        STORE
+                    </td>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;text-align: center;">
+                        MARKETTING</td>
+                    <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;text-align: center;">
+                        PROD
+                        HEAD
+                    </td>
+                    <td style="border: 1px solid black;text-align: center;">QUALITY HEAD</td>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;text-align: center;"
+                        colspan="2">
+                        MACHINESHOP HEAD</td>
+                    <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;text-align: center;">
+                        GM/MD
+                    </td>
+                </tr>
+            </table>
+
+        </div><br>
+
+
+
+        <div class="text-center p-2">
+            <button mat-raised-button (click)="printPage()"
+                style="background-color: blue;color: white;">Print</button><br>
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

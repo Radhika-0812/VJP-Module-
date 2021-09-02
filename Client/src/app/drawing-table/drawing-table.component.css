@@ -1,0 +1,115 @@
+  table {
+  width: 107.79%;
+ 
+
+}
+tr:nth-child(odd)
+{background-color: rgb(187, 218, 248);
+}
+tr:nth-child(even) {
+  background-color: rgb(255, 251, 251);
+}
+
+.samplingbutton
+{
+  padding-left:170px;margin-top:-102px;
+}
+.add_button
+{
+  margin-left:-425px;
+  margin-top:10px;
+}
+
+
+.header_h
+{
+  font-size: 10px;
+  margin-top: -10px;
+  
+}
+
+
+.lgout {
+  float: right;
+  background-color: #fdfdfd;
+  border-color: #efefef;
+  color: red;
+}
+
+.make-red {
+  background-color: #ffd0c2;
+}
+span{
+  display: inline-block;
+  margin: 0;
+}
+
+.successsnackbarclass {
+  background-color: green !important;
+  color: white;
+}
+
+.errorsnackbarclass {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #a72f2f !important;
+}
+
+tr.mat-header-row
+{
+  height: 40px;
+
+}
+
+th.mat-header-cell
+{
+  text-align: center;
+  padding: 0 !important;
+  font-size: x-small;
+  width: 20px;
+  height: 20px;
+  border: 1px solid whitesmoke;
+  color:white;
+  background-color: rgb(3, 3, 49);
+
+}
+td.mat-cell {
+  text-align: center;
+  border: 1px solid whitesmoke;
+  font-size: 11px;
+  padding: 0;
+
+}
+
+th {
+  font-size: x-small;
+  color: black;
+  width: 30px;
+  height: 10px;
+
+}
+
+input[type=text] {
+  width: 180px;
+  height:42px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  /* margin-left: 60%; */
+  background-image: url("/assets/search1.jpeg");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 50%;
+}
+
+.in {
+margin-left:-657px;
+height:10px;
+}

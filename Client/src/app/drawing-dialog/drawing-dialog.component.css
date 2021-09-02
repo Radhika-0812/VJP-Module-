@@ -1,0 +1,48 @@
+.mybghead{
+    background-color: #5676ff;
+}
+.title-dialog-title
+{
+font-size: 14px;
+}
+.example-full-width {
+    width: 50%;
+  }
+.mat-form-field
+{
+  font-size: 12px;
+}
+.example-full-widthcast
+{
+  
+  width: 50%;
+}
+.example-full-widthmach
+{
+  top:20px;
+  width: 50%;
+}
+.example-full-widthrevnummach
+{ 
+  top:20px;
+  left:12px;
+  width: 20%;
+}
+.example-full-widthrevnumcast
+{
+  left:12px;
+  width: 20%;
+}
+.example-margin
+{
+font-size: 13px;
+}
+  .successsnackbarclass{
+    background-color: green !important;
+    color: white;
+    }
+    .errorsnackbarclass{
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #a72f2f !important;
+    }
+    

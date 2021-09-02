@@ -1,0 +1,68 @@
+<app-navbar>
+    <h3 style=" color: white;">Inspection</h3>
+</app-navbar>
+
+
+<div style=" min-height: calc(100vh - 110px);">
+    <div style="width: 95%;margin-left: 3%;padding-top: 4.3%;">
+
+        <div>
+            
+                
+            
+
+            <ng-container *ngIf="fircheck">
+                <mat-tab-group>
+                    <mat-tab label="M-FIR">
+
+                        <app-fir> </app-fir>
+                    </mat-tab>
+                    <mat-tab label="C-FIR">
+                        <app-c-fir></app-c-fir>
+                    </mat-tab>
+
+                    <!-- <mat-tab label="Final Inspection">
+                <app-predispatch></app-predispatch>
+                </mat-tab> -->
+
+                </mat-tab-group>
+            </ng-container>
+            <ng-container *ngIf="!fircheck">
+                <mat-tab-group>
+                    <mat-tab label="Drg Details ">
+                        <app-drg-details> </app-drg-details>
+                    </mat-tab>
+
+                    <ng-container *ngIf="fpchecked">
+                    <mat-tab label="FP Inspection">
+
+                        <app-firstpart-print></app-firstpart-print>
+                        <!-- <app-firstpart></app-firstpart> -->
+                    </mat-tab>
+                    </ng-container>
+
+                    <ng-container *ngIf="pichecked">
+                    <mat-tab label="Periodic Inspection">
+                        <app-periodic></app-periodic>
+                    </mat-tab>
+                    </ng-container>
+
+                    <ng-container *ngIf="ctqchecked">
+                      <mat-tab label="Run Chart">
+                         <app-runchart></app-runchart>
+                       </mat-tab>
+                    </ng-container>  
+                    <!-- <mat-tab label="Final Inspection">
+        <app-predispatch></app-predispatch>
+        </mat-tab> -->
+
+                </mat-tab-group>
+            </ng-container>
+
+
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

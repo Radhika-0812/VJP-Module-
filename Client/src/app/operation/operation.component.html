@@ -1,0 +1,413 @@
+<app-navbar>
+  <a>
+    <ng-container *ngIf="islog && isMT">
+      <img style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">
+    </ng-container>
+  </a>
+  <h3 style=" color: white;">Process&nbsp;Plan</h3>
+</app-navbar>
+<div style=" min-height: calc(100vh - 110px);">
+  <div style="width: 95%;margin-left: 3%;padding-top: 1%;">
+
+
+    <div *ngIf="islog && isET || isENGG">
+      <div class="row">
+        <div style="margin-left: 3%;">
+          <button mat-mini-fab (click)="createDrawing()" style="background-color: #2727ec; color: white;">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <div class="col-md-4">
+          <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="showcopy()">Copy Process
+
+          </button>
+
+        </div>
+
+
+      </div>
+
+
+
+
+    </div>
+
+    <div class="p-5">
+      <div>
+
+        <mat-card style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+
+          <table style="width:100%;    border: 1px solid black;
+        border-collapse: collapse;">
+            <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+              <th style="    border: 1px solid black;
+              border-collapse: collapse;word-spacing: 15px;"> <b> VJP ALUMINIUM FOUNDRY </b> </th>
+              <th colspan="4" style="text-align: center;" style="    border: 1px solid black;
+          border-collapse: collapse;  text-align: center;word-spacing: 15px;">QUALITY PLAN</th>
+              <td style="    border: 1px solid black;
+          border-collapse: collapse;">Drawing code</td>
+              <th style="    border: 1px solid black;
+           border-collapse: collapse;">{{drgObject.id}}</th>
+
+            </tr>
+
+
+            <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+              <td style="    border: 1px solid black;
+          border-collapse: collapse;">Casting Drawing #/ Rev/ Date</td>
+              <th style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partNum}}</th>
+              <th style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revNo}}</th>
+
+              <th style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revDate | date: 'dd/MM/yyyy'}}</th>
+              <td style="    border: 1px solid black;
+          border-collapse: collapse;">Part Name</td>
+              <th colspan="2" style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partName | uppercase}}</th>
+
+            </tr>
+
+            <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+              <td style="    border: 1px solid black;
+          border-collapse: collapse;">Machining Drawing #/ Rev/ Date</td>
+              <th style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partNum1}}</th>
+              <th style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revNo1}}</th>
+              <th style="    border: 1px solid black;
+                     border-collapse: collapse;"> {{drgObject.revDate1 | date: 'dd/MM/yyyy'}}</th>
+
+
+
+              <ng-container *ngIf="qpaObject; else teset">
+                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan #</td>
+                <th colspan="2" style="border: 1px solid black; border-collapse: collapse;">
+                  {{qpaObject.pfNo}}
+                </th>
+              </ng-container>
+              <ng-template #teset>
+                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan #</td>
+                <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA
+                </th>
+              </ng-template>
+
+
+
+
+            </tr>
+            <tr style="    border: 1px solid black;
+            border-collapse: collapse;">
+              <td colspan="1" style="    border: 1px solid black;
+              border-collapse: collapse;">Casting Tolerance</td>
+              <th colspan="2" style="    border: 1px solid black;
+              border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
+
+              <td colspan="2" style="    border: 1px solid black;
+                   border-collapse: collapse;">Machining Tolerance</td>
+              <th colspan="2" style="    border: 1px solid black;
+                   border-collapse: collapse;">{{drgObject. machiningToleranceStandard | uppercase}}</th>
+            </tr>
+
+
+          </table>
+          <!-- <table style="width:100%;    border: 1px solid black;
+          border-collapse: collapse;">
+            <tr style="    border: 1px solid black;
+          border-collapse: collapse;">
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;"> <b> VJP ALUMINIUM FOUNDRY </b> </th>
+              <th colspan="4" style="text-align: center;" style="    border: 1px solid black;
+            border-collapse: collapse;  text-align: center;">QUALITY PLAN</th>
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Drawing code</td>
+              <th style="    border: 1px solid black;
+             border-collapse: collapse;">{{drgObject.id}}</th>
+
+            </tr>
+
+
+            <tr style="    border: 1px solid black;
+          border-collapse: collapse;">
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Casting Drawing No/Rev</td>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;">{{drgObject.partNum}}</th>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;">{{drgObject.revNo}}</th>
+
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Operation No.</td>
+              <td  style="    border: 1px solid black;
+            border-collapse: collapse;"><b>-</b></td>
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Quality Plan No</td>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;"></th>
+            </tr>
+
+            <tr style="    border: 1px solid black;
+          border-collapse: collapse;">
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Machining Drawing No/Rev</td>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;">{{drgObject.partNum1}}</th>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;">{{drgObject.revNo1}}</th>
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Operation Description</td>
+              <th  style="    border: 1px solid black;
+            border-collapse: collapse;"><b> -</b></th>
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Process Plan No</td>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;"></th>
+
+            </tr>
+            <tr style="    border: 1px solid black;
+  border-collapse: collapse;">
+              <td style="    border: 1px solid black;
+    border-collapse: collapse;">Part Name</td>
+              <th colspan="2" style="    border: 1px solid black;
+    border-collapse: collapse;">{{drgObject.partName}}</th>
+              <td  style="    border: 1px solid black;
+    border-collapse: collapse;">Work Center</td>
+              <th  style="    border: 1px solid black;
+    border-collapse: collapse;"><b>-</b></th>
+              <td style="    border: 1px solid black;
+    border-collapse: collapse;">Route Card Number</td>
+              <th style="    border: 1px solid black;
+    border-collapse: collapse;"></th>
+            </tr>
+
+
+            <tr style="    border: 1px solid black;
+  border-collapse: collapse;">
+              <td style="    border: 1px solid black;
+    border-collapse: collapse;">Material Grade</td>
+              <th colspan="2" style="    border: 1px solid black;
+    border-collapse: collapse;"></th>
+              <td style="    border: 1px solid black;
+        border-collapse: collapse;">Customer</td>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;">{{drgObject.customerName}}</th>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;"></th>
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;"></th>
+
+            </tr>
+          </table> -->
+          <!--         
+        <div class="row">
+          <div style="font-size: larger;" class="col-6">
+            <b> Drawing Code :{{drgObject.id}} </b> 
+           </div>
+          <div class="col-6">
+            Rev No :{{drgObject.revNo}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            Rev Date :{{drgObject.revDate | date: 'dd/MM/yyyy'}}
+          </div>
+          <div class="col-6">
+            End Customer :{{drgObject.endCustomer}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            Component Name :{{drgObject.partName}}
+          </div>
+          <div class="col-6">
+            Company Name :{{drgObject.customerName}}
+          </div>
+          
+        </div>
+      
+        <div class="row">
+          <div class="col-6">
+            Customer's Rep :{{drgObject.csr}}
+          </div>
+          <div style="font-size: large;" class="col-6">
+          <b>  Process Flow No :{{qpaObject.pfNo}}</b>
+          </div>
+           
+        </div> -->
+
+
+        </mat-card>
+      </div>
+
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>&nbsp; S/N </th>
+            <td mat-cell *matCellDef="let element; let rIndex = index;">
+              {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="opnNo">
+            <th mat-header-cell *matHeaderCellDef>PROCESS # </th>
+            <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(element)" *matCellDef="let element">
+              <button mat-raised-button>{{element.opnNo}}</button> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="opnName">
+            <th mat-header-cell *matHeaderCellDef> PROCESS NAME </th>
+            <td mat-cell *matCellDef="let element"> {{element.opnName | uppercase}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> DESCRIPTION </th>
+            <td mat-cell *matCellDef="let element"> {{element.description | uppercase}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="workCenter">
+            <th mat-header-cell *matHeaderCellDef> WORK CENTRE </th>
+            <td mat-cell *matCellDef="let element"> {{element.workCenter | uppercase}} </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="qpapprove">
+            <th mat-header-cell *matHeaderCellDef>Quality Plan Approval</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="text-center p-2">
+                <ng-container
+                  *ngIf="element.qpTechConfirm == '0' || element.qpTechConfirm == '1' || element.qpTechConfirm == NULL">
+                  <span *ngIf="element.qpTechConfirm == '1'"><a mat-stroked-button disabled
+                      style="color: green; width: 100px;">Approved</a> </span>
+                  <span *ngIf="element.qpTechConfirm == '0'"><a mat-stroked-button disabled
+                      style="color:red; width: 100px;">Rejected</a> </span> &nbsp;
+                  <span *ngIf="element.qpTechConfirm == NULL"><a mat-stroked-button disabled
+                      style="color:blue; width: 100px;">Pending</a> </span> &nbsp;
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="qpmasterapprove">
+            <th mat-header-cell *matHeaderCellDef>Quality Plan Approval</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="text-center p-2">
+                <ng-container
+                  *ngIf="element.qpMasterApproval == '0' || element.qpMasterApproval == '1' || element.qpMasterApproval == NULL">
+                  <span *ngIf="element.qpMasterApproval == '1'"><a mat-stroked-button disabled
+                      style="color: green; width: 100px;">Approved</a> </span>
+                  <span *ngIf="element.qpMasterApproval == '0'"><a mat-stroked-button disabled
+                      style="color:red; width: 100px;">Rejected</a> </span> &nbsp;
+                  <span *ngIf="element.qpMasterApproval == NULL"><a mat-stroked-button disabled
+                      style="color:blue; width: 100px;">Pending</a> </span> &nbsp;
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>MODIFICATION</th>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <ng-container *ngIf="(element.qpTechConfirm == '0'  &&  element.qpMasterApproval == NULL)">
+                  <span><a mat-stroked-button disabled style="color:red; width: 200px;">Rejected Click To Edit</a>
+                  </span> &nbsp; 
+                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                          padding: 0 !important;" (click)="editDrawing(element)">
+                    <mat-icon style="color:green" selected>edit</mat-icon>
+                  </button><br>
+                  <ng-container *ngIf="element.qpTechRejectionComment" >
+
+                    <span >Reason: {{element.qpTechRejectionComment}}</span><br>
+                  </ng-container>
+                  <ng-container *ngIf="element.qpMasterRejectionComment">
+                    <span >Reason: {{element.qpMasterRejectionComment}}</span>
+                  </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="( element.qpTechConfirm == '1') && (element.qpMasterApproval == '0')">
+                  <span><a mat-stroked-button disabled style="color:red; width: 200px;">Rejected Click To Edit</a>
+                  </span> &nbsp;
+                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                      padding: 0 !important;" (click)="editDrawing(element)">
+                    <mat-icon style="color:green" selected>edit</mat-icon>
+                  </button> <br>
+                  <ng-container *ngIf="element.qpTechRejectionComment" >
+
+                    <span >Reason: {{element.qpTechRejectionComment}}</span><br>
+                  </ng-container>
+                  <ng-container *ngIf="element.qpMasterRejectionComment">
+                    <span >Reason: {{element.qpMasterRejectionComment}}</span>
+                  </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="(element.qpTechConfirm == NULL ) && element.qpMasterApproval == NULL ">
+                  <span><a mat-stroked-button disabled style="color:blue; width: 150px;">Approval Pending</a> </span>
+                  &nbsp;
+                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                padding: 0 !important;" (click)="editDrawing(element)">
+                    <mat-icon style="color:green" selected>edit</mat-icon>
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="( element.qpTechConfirm == '1') && element.qpMasterApproval == NULL ">
+                  <span><a mat-stroked-button disabled style="color:blue; width: 150px;">Approval Pending</a> </span>
+                  &nbsp;
+                  
+                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                padding: 0 !important;" (click)="editDrawing(element)">
+                    <mat-icon style="color:green" selected>edit</mat-icon>
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="element.qpTechConfirm == '1' && element.qpMasterApproval == '1'">
+                  <span><a mat-stroked-button disabled style="color: green; width: 100px;">Approved</a> </span>
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>DELETE</th>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                  padding: 0 !important;" (click)="deleteDrg(element.id)">
+                  <mat-icon color="warn" selected>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+
+          <tr style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator #myPaginator [pageSizeOptions]="[50,100,200,400]" showFirstLastButtons></mat-paginator>
+
+      </div>
+
+
+
+    </div>
+    <div *ngIf="appButton" style="text-align: right; margin-right: 50px;padding-bottom: 20px; margin-top: -2%;">
+      <button *ngIf="islog &&isTT ||isTEC" mat-raised-button class="save-button" (click)="approval(pfno,1)"> Confirm
+        Approval </button>
+    </div>
+
+    <div *ngIf="appButton1" style="text-align: right; margin-right: 50px; padding-bottom: 20px;">
+      <button *ngIf="islog &&isMT ||isMASTER" mat-raised-button class="save-button" (click)="approvalMaster(pfno,1)"> Confirm
+        Approval </button>
+    </div>
+    <div class="col text-center">
+      <button *ngIf="submitshow" mat-raised-button (click)="confirmProcess()">Submit Process</button>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
